@@ -1,0 +1,28 @@
+[ 
+    {
+        "name": "Items",
+        "options": [
+            {
+              "img":"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/potion.png",
+              "name": "Potion",
+              "cost": 200,
+              "id": 1,
+              "counter": 0
+            },
+            {
+              "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/super-potion.png",
+              "name": "Super-Potion",
+              "cost": 700,
+              "id": 2,
+              "counter": 0
+            },
+            {
+              "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/hyper-potion.png",
+              "name": "Hiper-Potion",
+              "cost": 1500,
+              "id": 3,
+              "counter": 0
+            }
+        ]
+    }
+]     
