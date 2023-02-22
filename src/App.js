@@ -21,8 +21,9 @@ function App() {
         }}
       >
         <Box sx={{
-          width: 855,
+          width: 850,
           height: 500,
+          marginRight: 2,
         }}>
           {Items.map((item) =>
           <>

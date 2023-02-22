@@ -22,6 +22,41 @@
               "cost": 1500,
               "id": 3,
               "counter": 0
+            },
+            {
+              "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/hyper-potion.png",
+              "name": "Hiper-Potion",
+              "cost": 1500,
+              "id": 3,
+              "counter": 0
+            },
+            {
+              "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/hyper-potion.png",
+              "name": "Hiper-Potion",
+              "cost": 1500,
+              "id": 3,
+              "counter": 0
+            },
+            {
+              "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/hyper-potion.png",
+              "name": "Hiper-Potion",
+              "cost": 1500,
+              "id": 3,
+              "counter": 0
+            },
+            {
+              "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/hyper-potion.png",
+              "name": "Hiper-Potion",
+              "cost": 1500,
+              "id": 3,
+              "counter": 0
+            },
+            {
+              "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/hyper-potion.png",
+              "name": "Hiper-Potion",
+              "cost": 1500,
+              "id": 3,
+              "counter": 0
             }
         ]
     }
