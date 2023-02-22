@@ -6,15 +6,12 @@ import CardItem from "./CardItem"
 
 const ContainerCounterItem = ()=>{
     return (
-        <Paper elevation={1}>
+        <Paper elevation={3}>
             <Box sx={{
                 display: "flex",
                 flexDirection: "row",
                 alignItems: "center",
-                marginTop:1,
-                marginBottom:1,
-                marginLeft:1,
-                marginRight:1,
+                margin:1,
               }}>
                 <CardItem/>
                 <Counter/>

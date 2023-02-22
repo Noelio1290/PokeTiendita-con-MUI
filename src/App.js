@@ -2,8 +2,9 @@ import './App.css';
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
 import ContainerCounterItem from './Components/ContainerCounterItem';
-import TitleLegend from './Components/TitleLegend';
+import UniversalLegend from './Components/UniversalLegend';
 import ContainerLegendButton from './Components/ContainerLegendButton';
+import ContainerLegendButtonInput from './Components/ContainerLegendButtonInput';
 
 
 
@@ -11,15 +12,17 @@ import ContainerLegendButton from './Components/ContainerLegendButton';
 function App() {
   return (
     <div className="App">
-      <Container >
-        <TitleLegend/>
+      <Container sx={{
+        display: 'Flex',
+        justifyContent: 'space-around'
+      }}>  
         <Box>
-          <Box>
-            <ContainerCounterItem/>
-          </Box>
-          <Box>
-            <ContainerLegendButton/>
-          </Box>
+          <UniversalLegend string={"Items a la venta:"}/>
+          <ContainerCounterItem/>
+        </Box>
+        <Box>
+          <ContainerLegendButton/>
+          <ContainerLegendButtonInput/>
         </Box>
       </Container>
     </div>

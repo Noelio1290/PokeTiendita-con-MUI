@@ -2,14 +2,14 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 
 
-const TitleLegend = () => {
+const UniversalLegend = ({string}) => {
     return (
     <Box>
         <Typography variant='h4' component='h2'>
-           Items a la venta:
+           {string}
         </Typography>
     </Box>
     )
 };
 
-export default TitleLegend
+export default UniversalLegend
