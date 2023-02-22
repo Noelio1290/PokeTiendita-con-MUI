@@ -10,7 +10,7 @@ const ContainerLegendButton = ()=>{
                 flexDirection: "column",
                 margin:1,
                 }}>
-                <UniversalLegend string={"Total:"}/>
+                <UniversalLegend string={"Total:"} variant={"h4"}/>
                 <UniversalButton string={"Pagar"}/>
             </Box>
         </Paper>

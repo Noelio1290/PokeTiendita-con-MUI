@@ -15,7 +15,7 @@ const ContainerLegendButtonInput = () => {
                 padding:1
                 }}
             >
-                <UniversalLegend string={"My Money:"}/>
+                <UniversalLegend string={"My Money:"} variant={"h4"}/>
                 <Box>
                     <UniversalButton string={"Add"}/>
                     <UniversalButton string={"Remove"}/>

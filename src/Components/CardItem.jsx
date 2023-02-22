@@ -2,7 +2,7 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/system/Box';
 
 
-const CardItem = () => {
+const CardItem = ({item}) => {
     return (
             <Box sx={{
                 display: "flex",
@@ -14,15 +14,15 @@ const CardItem = () => {
                 marginRight:1,
             }}>
                 <img 
-                    src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/potion.png"
+                    src={item.img}
                     alt="" 
-                    className='img'
+                    className='imgen'
                     />
                 <Typography variant='subtitle' component='h3'>
-                    Potion
+                    {item.name}
                 </Typography>
                 <Typography variant='subtitle' component='h3'>
-                    $200
+                    ${item.cost}
                 </Typography>
             </Box>
     )

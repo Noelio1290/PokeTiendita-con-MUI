@@ -2,10 +2,10 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 
 
-const UniversalLegend = ({string}) => {
+const UniversalLegend = ({string,variant}) => {
     return (
     <Box>
-        <Typography variant='h4' component='h2'>
+        <Typography variant={variant} component='h2'>
            {string}
         </Typography>
     </Box>
