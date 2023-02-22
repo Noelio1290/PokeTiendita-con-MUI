@@ -5,81 +5,79 @@ import UniversalLegend from './Components/UniversalLegend';
 import ContainerLegendButton from './Components/ContainerLegendButton';
 import ContainerLegendButtonInput from './Components/ContainerLegendButtonInput';
 import ContainerItems from './Components/ContainerOfItemFull';
+import { useState, useEffect } from 'react';
+const api = "https://pokeapi.co/api/v2/item"
 
-const ListItem = [
-  {
-    img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/potion.png",
-    name: "Potion",
-    cost: 200,
-    id: 0,
-    counter: 0
-  },
-  {
-    img:"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/potion.png",
-    name: "Potion",
-    cost: 200,
-    id: 1,
-    counter: 0
-  },
-  {
-    img:"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/potion.png",
-    name: "Potion",
-    cost: 200,
-    id: 2,
-    counter: 0
-  },
-  {
-    img:"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/potion.png",
-    name: "Potion",
-    cost: 200,
-    id: 3,
-    counter: 0
-  },
-  {
-    img:"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/potion.png",
-    name: "Potion",
-    cost: 200,
-    id: 4,
-    counter: 0
-  },
-  {
-    img:"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/potion.png",
-    name: "Potion",
-    cost: 200,
-    id: 5,
-    counter: 0
-  },
-  {
-    img:"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/potion.png",
-    name: "Potion",
-    cost: 200,
-    id: 6,
-    counter: 0
-  },
-  {
-    img:"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/potion.png",
-    name: "Potion",
-    cost: 200,
-    id: 7,
-    counter: 0
-  },
-  {
-    img:"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/potion.png",
-    name: "Potion",
-    cost: 200,
-    id: 8,
-    counter: 0
-  },
-  {
-    img:"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/potion.png",
-    name: "Potion",
-    cost: 200,
-    id: 9,
-    counter: 0
-  },
-]
 
 function App() {
+  let [countersRecord, setCountersRecord] = useState(new Map());
+
+  useEffect(()=>{
+    const getItem = async (id)=>{
+      const payload = await fetch(`${api}/${id}`)
+      const data = await payload.json()
+      const datosPokemon = {
+        img:data.sprites.default,
+        name:data.name.charAt(0).toUpperCase() + data.name.slice(1),
+        cost:data.cost
+      }
+      return datosPokemon
+    }
+  
+    const getItems = async () => {
+      console.log('im being calling')
+      const itemId = [17,26,25,24,23,4,3,2,83]
+      const pokeNames = []
+
+      try {
+        for(let i = 0; i < itemId.length; i++){
+          pokeNames.push(await getItem(itemId[i]))
+        }
+      } catch (error) {
+        console.log(error)
+      }
+
+      const temporaryRecord = new Map()
+      for (let index = 0; index < pokeNames.length; index++) {
+        const element = pokeNames[index];
+        const id = `Item-number-${index}`;
+        temporaryRecord.set({...element, id, counter: 0})
+      }
+      setCountersRecord(temporaryRecord)
+    };
+
+    getItems()
+  }, []);
+
+  const increaseItemCounter = (itemId) => {
+    const temporaryRecord = new Map(countersRecord)
+    const item = temporaryRecord.get(itemId);
+    item.counter = item.counter + 1;
+    temporaryRecord.set(itemId, item)
+    setCountersRecord(temporaryRecord)
+  }
+
+  const decreaseItemCounter = (itemId) => {
+    const temporaryRecord = new Map(countersRecord)
+    const item = temporaryRecord.get(itemId);
+    if(item.counter>0 ){
+    item.counter = item.counter - 1;
+    temporaryRecord.set(itemId, item)
+    setCountersRecord(temporaryRecord)
+    }
+  };
+
+  const makePayment = () => {
+    const temporaryRecord = new Map(countersRecord);
+    for (const key of temporaryRecord.keys()) {
+      const item = temporaryRecord.get(key)
+      item.counter = 0;
+      temporaryRecord.set(key, item)
+    }
+    setCountersRecord(temporaryRecord)
+  };
+
+
   return (
     <div className="App">
       <Container sx={{
@@ -94,7 +92,7 @@ function App() {
           }}
         >
           <UniversalLegend string={"Items a la venta:"} variant={"h2"}/>
-          <ContainerItems ListItem={ListItem}/>
+          <ContainerItems countersRecord={countersRecord}/>
         </Box>
         <Box 
           sx={{
