@@ -2,7 +2,8 @@ import './App.css';
 import Container from '@mui/material/Container';
 import TitleLegend from './Components/TitleLegend';
 import Box from '@mui/material/Box';
-import Contador from './Components/Counter';
+import Counter from './Components/Counter';
+import CardItem from './Components/CardItem';
 
 
 function App() {
@@ -14,7 +15,8 @@ function App() {
       }}>
         <Box>
           <TitleLegend/>
-          <Contador/>
+          <CardItem/>
+          <Counter/>
         </Box>
         <Box>
 
