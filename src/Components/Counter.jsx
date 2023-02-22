@@ -8,6 +8,10 @@ function Counter() {
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
+            marginTop:1,
+            marginBottom:1,
+            marginLeft:1,
+            marginRight:1,
           }}>
             <Button variant="outlined">-</Button>
             <Typography variant="h4" component="h2" >0</Typography>

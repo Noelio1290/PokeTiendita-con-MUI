@@ -1,19 +1,17 @@
-import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/system/Box';
 
 
 const CardItem = () => {
     return (
-        <Paper 
-            elevation={1}
-            sx={{
-            }}
-        >
             <Box sx={{
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
+                marginTop:1,
+                marginBottom:1,
+                marginLeft:1,
+                marginRight:1,
             }}>
                 <img 
                     src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/potion.png"
@@ -27,7 +25,6 @@ const CardItem = () => {
                     $200
                 </Typography>
             </Box>
-        </Paper>
     )
 } 
 
