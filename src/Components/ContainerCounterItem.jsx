@@ -11,6 +11,10 @@ const ContainerCounterItem = ()=>{
                 display: "flex",
                 flexDirection: "row",
                 alignItems: "center",
+                marginTop:1,
+                marginBottom:1,
+                marginLeft:1,
+                marginRight:1,
               }}>
                 <CardItem/>
                 <Counter/>
