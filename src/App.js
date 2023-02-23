@@ -6,6 +6,7 @@ import ContainerLegendButton from './Components/ContainerLegendButton';
 import ContainerLegendButtonInput from './Components/ContainerLegendButtonInput';
 import ContainerItems from './Components/ContainerOfItemFull';
 import { useState, useEffect } from 'react';
+import BasicModal from './Components/Modal';
 const api = "https://pokeapi.co/api/v2/item"
 
 
@@ -95,6 +96,12 @@ const increaseItemCounter = (itemId) => {
     }
   };
 
+  //variable y function modal
+  let [open, setOpen] = useState(false);
+  let [legend,setLegend] = useState("");
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
   return (
     <div className="App">
       <Container sx={{
@@ -118,6 +125,7 @@ const increaseItemCounter = (itemId) => {
             decreaseItemCounter={decreaseItemCounter}
             countersRecord={countersRecord}
           />
+          <BasicModal open={open} handleClose={handleClose}/>
         </Box>
         <Box 
           sx={{
@@ -131,6 +139,7 @@ const increaseItemCounter = (itemId) => {
             setTotalAmount={setTotalAmount}
             myMoneyTotalAmount={myMoneyTotalAmount} 
             setMyMoneyTotalAmount={setMyMoneyTotalAmount}
+            handleOpen={handleOpen}
             
           />
           <ContainerLegendButtonInput 
@@ -138,6 +147,8 @@ const increaseItemCounter = (itemId) => {
             setMyMoneyTotalAmount={setMyMoneyTotalAmount}
           />
         </Box>
+        
+
       </Container>
     </div>
   );

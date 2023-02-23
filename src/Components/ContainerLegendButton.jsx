@@ -10,17 +10,19 @@ const ContainerLegendButton = (
         myMoneyTotalAmount,
         setMyMoneyTotalAmount,
         makePayment,
+        handleOpen,
     })=>{
 
     const buttonFunction = ()=>{
         if(totalAmount === 0){
-          
+            handleOpen()
         }else if(totalAmount <= myMoneyTotalAmount){
           makePayment()
           setMyMoneyTotalAmount(myMoneyTotalAmount-totalAmount)
           setTotalAmount(0)
+          handleOpen()
         }else{
-          
+            handleOpen()
     
         }
         

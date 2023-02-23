@@ -39,7 +39,7 @@ const ContainerLegendButtonInput = (
                 padding:1
                 }}
             >
-                <UniversalLegend string={"My Money is:  $"} prop={myMoneyTotalAmount} variant={"h4"}/>
+                <UniversalLegend string={"My Money is :   $"} prop={myMoneyTotalAmount} variant={"h4"}/>
                 <Box>
                     <UniversalButton string={"Add"} funct={increaseMyMoney} />
                     <UniversalButton string={"Remove"} funct={decreaseMyMoney}/>
