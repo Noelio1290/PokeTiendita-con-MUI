@@ -3,22 +3,22 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 const Counter= (
   {
-    item,
     identifier,
     count,
+    increaseAmountButton,
+    decreaseAmountButton,
     increaseItemCounter,
     decreaseItemCounter,
-    increaseAmount,
-    decreaseAmount,
   }) => {
-
     const increasingHandler = () => {
-      increaseAmount()
+      increaseItemCounter(identifier)
+      increaseAmountButton()
     };
 
     const decreasingHandler = () => {
       if(count !==0){
-        decreaseAmount()   
+        decreaseItemCounter(identifier); 
+        decreaseAmountButton()   
       };   
     };
 

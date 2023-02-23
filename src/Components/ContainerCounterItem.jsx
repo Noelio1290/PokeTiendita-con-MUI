@@ -6,41 +6,25 @@ import Grid from "@mui/material/Grid"
 
 
 const ContainerCounterItem = (
-    {
-        item,
-        cost,
-        count,
-        identifier,
-        countersRecord,
-        setCountersRecord,
-        increaseAmount,
-        decreaseAmount,
-    })=>{
-
-        const increaseItemCounter = (itemId) => {
-            const temporaryRecord = new Map(countersRecord)
-            const item = temporaryRecord.get(itemId);
-            item.count = item.count + 1;
-            temporaryRecord.set(itemId, item)
-            setCountersRecord(temporaryRecord)
-          }
-        
-          const decreaseItemCounter = (itemId) => {
-            const temporaryRecord = new Map(countersRecord)
-            const item = temporaryRecord.get(itemId);
-            if(count>0 ){
-            count = count - 1;
-            temporaryRecord.set(itemId, item)
-            setCountersRecord(temporaryRecord)
-            }
-          };
-
-          const increaseAmountButton= () => {
-            increaseAmount(cost)
-          }
-          const decreaseAmountButton=()=>{
-            decreaseAmount(cost)
-          }
+  {
+    item,
+    name,
+    cost,
+    img,
+    count,
+    identifier,
+    totalAmount,
+    increaseAmount,
+    decreaseAmount,
+    increaseItemCounter,
+    decreaseItemCounter,
+  })=>  {
+  const increaseAmountButton= () => {
+    increaseAmount(cost)
+  }
+  const decreaseAmountButton=()=>{
+    decreaseAmount(cost)
+  }
 
 
     return (
@@ -54,13 +38,13 @@ const ContainerCounterItem = (
                   }}>
                     <CardItem item={item}/>
                     <Counter 
-                        item={item}
-                        identifier={identifier}
-                        count={count}
-                        increaseItemCounter={increaseItemCounter}
-                        decreaseItemCounter={decreaseItemCounter}
-                        increaseAmountButton={increaseAmountButton}
-                        decreaseAmountButton={decreaseAmountButton}
+                      identifier={identifier}
+                      totalAmount={totalAmount}
+                      increaseAmountButton={increaseAmountButton} 
+                      decreaseAmountButton={decreaseAmountButton}
+                      increaseItemCounter={increaseItemCounter}
+                      decreaseItemCounter={decreaseItemCounter}
+                      count={count}
                     />
                 </Box>
             </Paper>

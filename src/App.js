@@ -14,6 +14,7 @@ function App() {
   let [myMoneyTotalAmount, setMyMoneyTotalAmount] = useState(25000);
   let [totalAmount, setTotalAmount] = useState(0)
 
+  //TRAER POKEITEMS
   useEffect(()=>{
     const getItem = async (id)=>{
       const payload = await fetch(`${api}/${id}`)
@@ -43,7 +44,7 @@ function App() {
       for (let index = 0; index < pokeNames.length; index++) {
         const element = pokeNames[index];
         const id = `Item-number-${index}`;
-        temporaryRecord.set({...element, id, counter: 0})
+        temporaryRecord.set(id,{...element, id, counter: 0})
       }
       setCountersRecord(temporaryRecord)
     };
@@ -51,6 +52,7 @@ function App() {
     getItems()
   }, []);
 
+  //FUNCION PARA PAGAR
   const makePayment = () => {
     const temporaryRecord = new Map(countersRecord);
     for (const key of temporaryRecord.keys()) {
@@ -61,6 +63,7 @@ function App() {
     setCountersRecord(temporaryRecord)
   };
 
+//INCREMENTA MONTO TOTAL
   const increaseAmount  = costItem =>{
     setTotalAmount(totalAmount + costItem)
   };
@@ -69,6 +72,26 @@ function App() {
       setTotalAmount(0)
     } else {
       setTotalAmount(totalAmount - costItem)
+    }
+  };
+
+//FUNCIONES COUNTERS
+
+const increaseItemCounter = (itemId) => {
+    const temporaryRecord = new Map(countersRecord)
+    const item = temporaryRecord.get(itemId);
+    item.counter = item.counter + 1;
+    temporaryRecord.set(itemId, item)
+    setCountersRecord(temporaryRecord)
+  }
+
+  const decreaseItemCounter = (itemId) => {
+    const temporaryRecord = new Map(countersRecord)
+    const item = temporaryRecord.get(itemId);
+    if(item.counter>0 ){
+    item.counter = item.counter - 1;
+    temporaryRecord.set(itemId, item)
+    setCountersRecord(temporaryRecord)
     }
   };
 
@@ -88,10 +111,12 @@ function App() {
         >
           <UniversalLegend string={"Items a la venta:"} variant={"h2"}/>
           <ContainerItems 
-            countersRecord={countersRecord}
-            setCountersRecord={setCountersRecord}
+            totalAmount={totalAmount}
             increaseAmount={increaseAmount}
             decreaseAmount={decreaseAmount}
+            increaseItemCounter={increaseItemCounter}
+            decreaseItemCounter={decreaseItemCounter}
+            countersRecord={countersRecord}
           />
         </Box>
         <Box 
@@ -101,7 +126,7 @@ function App() {
           }}
         >
           <ContainerLegendButton 
-            totalAmount={totalAmount}
+            totalAmount={totalAmount} makePayment={makePayment}
           />
           <ContainerLegendButtonInput 
             myMoneyTotalAmount={myMoneyTotalAmount}

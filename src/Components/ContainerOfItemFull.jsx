@@ -4,17 +4,19 @@ import {React, useEffect, useState} from 'react';
 
 const ContainerItems = (
     {
-        countersRecord,
-        setCountersRecord,
+        totalAmount,
         increaseAmount,
         decreaseAmount,
+        increaseItemCounter,
+        decreaseItemCounter,
+        countersRecord,
     }) => {
     
     let [listItems,setListItems]= useState([])
     
     useEffect(()=>{
         let temporaryList = [];
-        for( const item of countersRecord.keys()){
+        for( const item of countersRecord.values()){
             temporaryList = [...temporaryList, item]
         }
         setListItems(temporaryList)
@@ -29,17 +31,20 @@ const ContainerItems = (
                 marginRight:1,
             }}
         >
-            {listItems.map((item,index) => (
+            {listItems.map((item) => (
             <ContainerCounterItem 
-                key={index} 
+                key={item.id} 
                 identifier={item.id}
-                item={item} 
+                item={item}
+                name={item.name} 
                 cost={item.cost}
+                img={item.img}
                 count={item.counter}
-                countersRecord={countersRecord}
-                setCountersRecord={setCountersRecord}
+                totalAmount={totalAmount}
                 increaseAmount={increaseAmount}
                 decreaseAmount={decreaseAmount}
+                increaseItemCounter={increaseItemCounter}
+                decreaseItemCounter={decreaseItemCounter}
             />
             ))}
         </Grid>
