@@ -125,7 +125,7 @@ const increaseItemCounter = (itemId) => {
             decreaseItemCounter={decreaseItemCounter}
             countersRecord={countersRecord}
           />
-          <BasicModal open={open} handleClose={handleClose}/>
+          <BasicModal open={open} handleClose={handleClose} legend={legend}/>
         </Box>
         <Box 
           sx={{
@@ -140,7 +140,7 @@ const increaseItemCounter = (itemId) => {
             myMoneyTotalAmount={myMoneyTotalAmount} 
             setMyMoneyTotalAmount={setMyMoneyTotalAmount}
             handleOpen={handleOpen}
-            
+            setLegend={setLegend}
           />
           <ContainerLegendButtonInput 
             myMoneyTotalAmount={myMoneyTotalAmount}

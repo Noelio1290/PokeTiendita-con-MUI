@@ -15,7 +15,7 @@ const style = {
   p: 4,
 };
 
-function BasicModal({open,handleClose}) {
+function BasicModal({open,handleClose,legend}) {
 
 
   return (
@@ -31,7 +31,7 @@ function BasicModal({open,handleClose}) {
             Atencion
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            compra exitosa
+            {legend}
           </Typography>
         </Box>
       </Modal>

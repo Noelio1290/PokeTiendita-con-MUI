@@ -11,18 +11,33 @@ const ContainerLegendButton = (
         setMyMoneyTotalAmount,
         makePayment,
         handleOpen,
+        setLegend,
     })=>{
+
+    const legendChangeExito = () => {
+      setLegend("Compra Exitosa!! ")
+    }
+    const legendChangeError = () => {
+      setLegend("!Te Falta Dinero Pobre¡")
+    }
+
+    const legenOfNoArticle = () => {
+      setLegend("Primero Selecciona un articulo")
+    }
 
     const buttonFunction = ()=>{
         if(totalAmount === 0){
             handleOpen()
+            legenOfNoArticle()
         }else if(totalAmount <= myMoneyTotalAmount){
           makePayment()
           setMyMoneyTotalAmount(myMoneyTotalAmount-totalAmount)
           setTotalAmount(0)
           handleOpen()
+          legendChangeExito()
         }else{
             handleOpen()
+            legendChangeError()
     
         }
         
