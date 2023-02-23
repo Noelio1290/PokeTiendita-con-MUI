@@ -26,13 +26,12 @@ const ContainerLegendButton = (
         
     };
     return (
-        <Paper elevation={1} sx={{height:135}
-        }>
+        <Paper elevation={1} >
             <Box sx={{
                 flexDirection: "column",
                 margin:1, 
                 }}>
-                <UniversalLegend string={"Total Amount:   $"} prop={totalAmount} variant={"h4"}/>
+                <UniversalLegend string={"Total Amount is:   $"} prop={totalAmount} variant={"h4"}/>
                 <UniversalButton string={"Pagar"} funct={buttonFunction}/>
             </Box>
         </Paper>
