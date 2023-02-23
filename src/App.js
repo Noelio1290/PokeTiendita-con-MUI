@@ -126,7 +126,12 @@ const increaseItemCounter = (itemId) => {
           }}
         >
           <ContainerLegendButton 
-            totalAmount={totalAmount} makePayment={makePayment}
+            makePayment={makePayment}
+            totalAmount={totalAmount} 
+            setTotalAmount={setTotalAmount}
+            myMoneyTotalAmount={myMoneyTotalAmount} 
+            setMyMoneyTotalAmount={setMyMoneyTotalAmount}
+            
           />
           <ContainerLegendButtonInput 
             myMoneyTotalAmount={myMoneyTotalAmount}
