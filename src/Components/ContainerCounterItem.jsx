@@ -5,7 +5,35 @@ import CardItem from "./CardItem"
 import Grid from "@mui/material/Grid"
 
 
-const ContainerCounterItem = ({item})=>{
+const ContainerCounterItem = (
+    {
+        item,
+        count,
+        identifier,
+        countersRecord,
+        setCountersRecord,
+    })=>{
+
+        const increaseItemCounter = (itemId) => {
+            const temporaryRecord = new Map(countersRecord)
+            const item = temporaryRecord.get(itemId);
+            item.count = item.count + 1;
+            temporaryRecord.set(itemId, item)
+            setCountersRecord(temporaryRecord)
+          }
+        
+          const decreaseItemCounter = (itemId) => {
+            const temporaryRecord = new Map(countersRecord)
+            const item = temporaryRecord.get(itemId);
+            if(count>0 ){
+            count = count - 1;
+            temporaryRecord.set(itemId, item)
+            setCountersRecord(temporaryRecord)
+            }
+          };
+
+
+
     return (
         <Grid item xs={3}>
             <Paper elevation={3}>
@@ -16,7 +44,13 @@ const ContainerCounterItem = ({item})=>{
                     margin:1,
                   }}>
                     <CardItem item={item}/>
-                    <Counter/>
+                    <Counter 
+                        item={item}
+                        identifier={identifier}
+                        count={count}
+                        increaseItemCounter={increaseItemCounter}
+                        decreaseItemCounter={decreaseItemCounter}
+                    />
                 </Box>
             </Paper>
         </Grid>

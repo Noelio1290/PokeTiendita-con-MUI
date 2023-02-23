@@ -11,6 +11,7 @@ const api = "https://pokeapi.co/api/v2/item"
 
 function App() {
   let [countersRecord, setCountersRecord] = useState(new Map());
+  let [myMoneyTotalAmount, setMyMoneyTotalAmount] = useState(25000);
 
   useEffect(()=>{
     const getItem = async (id)=>{
@@ -49,23 +50,7 @@ function App() {
     getItems()
   }, []);
 
-  const increaseItemCounter = (itemId) => {
-    const temporaryRecord = new Map(countersRecord)
-    const item = temporaryRecord.get(itemId);
-    item.counter = item.counter + 1;
-    temporaryRecord.set(itemId, item)
-    setCountersRecord(temporaryRecord)
-  }
 
-  const decreaseItemCounter = (itemId) => {
-    const temporaryRecord = new Map(countersRecord)
-    const item = temporaryRecord.get(itemId);
-    if(item.counter>0 ){
-    item.counter = item.counter - 1;
-    temporaryRecord.set(itemId, item)
-    setCountersRecord(temporaryRecord)
-    }
-  };
 
   const makePayment = () => {
     const temporaryRecord = new Map(countersRecord);
@@ -92,7 +77,10 @@ function App() {
           }}
         >
           <UniversalLegend string={"Items a la venta:"} variant={"h2"}/>
-          <ContainerItems countersRecord={countersRecord}/>
+          <ContainerItems 
+            countersRecord={countersRecord}
+            setCountersRecord={setCountersRecord}
+          />
         </Box>
         <Box 
           sx={{
@@ -100,8 +88,11 @@ function App() {
           marginTop:11,
           }}
         >
-          <ContainerLegendButton/>
-          <ContainerLegendButtonInput/>
+          <ContainerLegendButton />
+          <ContainerLegendButtonInput 
+            myMoneyTotalAmount={myMoneyTotalAmount}
+            setMyMoneyTotalAmount={setMyMoneyTotalAmount}
+          />
         </Box>
       </Container>
     </div>
