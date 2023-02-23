@@ -12,6 +12,7 @@ const api = "https://pokeapi.co/api/v2/item"
 function App() {
   let [countersRecord, setCountersRecord] = useState(new Map());
   let [myMoneyTotalAmount, setMyMoneyTotalAmount] = useState(25000);
+  let [totalAmount, setTotalAmount] = useState(0)
 
   useEffect(()=>{
     const getItem = async (id)=>{
@@ -50,8 +51,6 @@ function App() {
     getItems()
   }, []);
 
-
-
   const makePayment = () => {
     const temporaryRecord = new Map(countersRecord);
     for (const key of temporaryRecord.keys()) {
@@ -62,12 +61,23 @@ function App() {
     setCountersRecord(temporaryRecord)
   };
 
+  const increaseAmount  = costItem =>{
+    setTotalAmount(totalAmount + costItem)
+  };
+  const decreaseAmount  = costItem =>{
+    if((totalAmount - costItem) <= 0) {
+      setTotalAmount(0)
+    } else {
+      setTotalAmount(totalAmount - costItem)
+    }
+  };
 
   return (
     <div className="App">
       <Container sx={{
         display: 'Flex',
-        justifyContent: 'space-around'
+        justifyContent: 'space-around',
+        backgroundColor: 'aquamarine'
         }}
       >  
         <Box 
@@ -80,6 +90,8 @@ function App() {
           <ContainerItems 
             countersRecord={countersRecord}
             setCountersRecord={setCountersRecord}
+            increaseAmount={increaseAmount}
+            decreaseAmount={decreaseAmount}
           />
         </Box>
         <Box 
@@ -88,7 +100,9 @@ function App() {
           marginTop:11,
           }}
         >
-          <ContainerLegendButton />
+          <ContainerLegendButton 
+            totalAmount={totalAmount}
+          />
           <ContainerLegendButtonInput 
             myMoneyTotalAmount={myMoneyTotalAmount}
             setMyMoneyTotalAmount={setMyMoneyTotalAmount}

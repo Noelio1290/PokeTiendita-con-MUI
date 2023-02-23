@@ -2,7 +2,13 @@ import Grid from "@mui/material/Grid"
 import ContainerCounterItem from "./ContainerCounterItem"
 import {React, useEffect, useState} from 'react';
 
-const ContainerItems = ({countersRecord,setCountersRecord}) => {
+const ContainerItems = (
+    {
+        countersRecord,
+        setCountersRecord,
+        increaseAmount,
+        decreaseAmount,
+    }) => {
     
     let [listItems,setListItems]= useState([])
     
@@ -28,9 +34,12 @@ const ContainerItems = ({countersRecord,setCountersRecord}) => {
                 key={index} 
                 identifier={item.id}
                 item={item} 
+                cost={item.cost}
                 count={item.counter}
                 countersRecord={countersRecord}
                 setCountersRecord={setCountersRecord}
+                increaseAmount={increaseAmount}
+                decreaseAmount={decreaseAmount}
             />
             ))}
         </Grid>

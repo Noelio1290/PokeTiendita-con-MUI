@@ -7,16 +7,18 @@ const Counter= (
     identifier,
     count,
     increaseItemCounter,
-    decreaseItemCounter
+    decreaseItemCounter,
+    increaseAmount,
+    decreaseAmount,
   }) => {
 
     const increasingHandler = () => {
-      increaseItemCounter(identifier)
+      increaseAmount()
     };
 
     const decreasingHandler = () => {
       if(count !==0){
-        decreaseItemCounter(identifier);   
+        decreaseAmount()   
       };   
     };
 

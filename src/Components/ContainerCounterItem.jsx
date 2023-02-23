@@ -8,10 +8,13 @@ import Grid from "@mui/material/Grid"
 const ContainerCounterItem = (
     {
         item,
+        cost,
         count,
         identifier,
         countersRecord,
         setCountersRecord,
+        increaseAmount,
+        decreaseAmount,
     })=>{
 
         const increaseItemCounter = (itemId) => {
@@ -32,6 +35,12 @@ const ContainerCounterItem = (
             }
           };
 
+          const increaseAmountButton= () => {
+            increaseAmount(cost)
+          }
+          const decreaseAmountButton=()=>{
+            decreaseAmount(cost)
+          }
 
 
     return (
@@ -50,6 +59,8 @@ const ContainerCounterItem = (
                         count={count}
                         increaseItemCounter={increaseItemCounter}
                         decreaseItemCounter={decreaseItemCounter}
+                        increaseAmountButton={increaseAmountButton}
+                        decreaseAmountButton={decreaseAmountButton}
                     />
                 </Box>
             </Paper>

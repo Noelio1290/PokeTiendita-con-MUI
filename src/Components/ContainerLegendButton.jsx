@@ -3,14 +3,14 @@ import Paper from "@mui/material/Paper"
 import UniversalLegend from "./UniversalLegend"
 import UniversalButton from "./UniversalButton"
 
-const ContainerLegendButton = ()=>{
+const ContainerLegendButton = ({totalAmount})=>{
     return (
         <Paper elevation={1}>
             <Box sx={{
                 flexDirection: "column",
                 margin:1,
                 }}>
-                <UniversalLegend string={"Total:"} variant={"h4"}/>
+                <UniversalLegend string={"Total Amount:   $"} prop={totalAmount} variant={"h4"}/>
                 <UniversalButton string={"Pagar"}/>
             </Box>
         </Paper>
